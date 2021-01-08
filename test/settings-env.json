@@ -1,0 +1,4 @@
+{ "EnvFile" : "settings-env.json",
+  "EnvArg1" : "ARG-1" ,
+  "EnvArg2" : "ARG-2"
+}

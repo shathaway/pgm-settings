@@ -1,0 +1,27 @@
+// This is a commented JSON file
+// Referenced by environment SETTINGS variable
+
+{
+  "EnvItemA": "Text for A",
+  "EnvItemB": "text for B",
+  "EnvItemC": "text for C",
+
+/* --------------------------
+   This is a multiple-line
+   comment
+   -------------------------- */
+
+  "ArayXX-Env": [
+   {"ObjId-1": 1,
+    "ObjId-2": 2,
+    "ObjId-3": 3},
+   "string a",
+   "string b",
+   {"ElementObj-A3":
+       "A3"},
+   {"ElementObj-A4":
+       "A4"}
+  ],
+  "PostLog": "PostLog Env",
+  "Colophon": "Colophon Env"
+}

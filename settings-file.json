@@ -1,0 +1,17 @@
+// This is a commented JSON file
+// This file tests various comment processing: C/C++ style.
+{
+  "FileA": "This identifies a file",
+  "tempA": "File for A",
+  "ItemB": "File for B",
+  "ItemC": "File for C",
+  "ItemD": "File for D",
+/*
+ * This is another Comment
+*/
+  "ArayEmpty": [
+  ],
+  "FileComment":"A file comment", //A single comment.
+  "Glossary": /* GL */ "PostLog Val" /* GLX */,
+  "Colophon": "Colophon Val"
+}

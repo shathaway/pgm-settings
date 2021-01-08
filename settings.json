@@ -1,0 +1,23 @@
+// This is a commented JSON file
+
+{
+  "tempA": "Text for A",
+  "ItemB": "text for B",
+  "ItemC": "text for C",
+/*
+ * This is another Comment
+*/
+  "ArayAi": [
+   {"ObjId-1": 1,
+    "ObjId-2": 2,
+    "ObjId-3": 3},
+   "string a",
+   "string b",
+   {"ElementObj-A3":
+       "A3"},
+   {"ElementObj-A4":
+       "A4"}
+  ],
+  "PostLog": "PostLog Val",
+  "Colophon": "Colophon Val"
+}
