@@ -1,100 +1,64 @@
 ﻿
-# node.js / Module: pgmsettings
+# node.js / Module: pgm-settings
 
-This module implements **getProgramSettings([options])** as an async function to collect and merge various JSON documents into a returned node.js object. If there is no located settings document, an empty node.js object is returned.
+This is a node module to retrieve program settings from various json document sources. The source objects are merged into a single node object. Any node object can be used as a set of default parameters, thus allowing setting collections to be chained.
 
-Source JSON documents may also include C/C++ style comments that are removed before creating configuration objects.
+The source json documents may contain C/C++ style comments that are removed before parsing.
 
-The **getProgramSettings({options})** is able to merge multiple JSON documents.
-An optional default node.js object can allow multiple calls to merge sequences of JSON documents.
+The **getProgramSettings({options})** is an async function that can also return a node promise.
 
-### JSON Comments - C/C++
+* default settings object
+* specified json file
+* program environment variable
+* program startup argument
 
-These comments are allowed in JSON files that are consumed by the **getProgramSettings()** function.
+## Usage
 
-    /* A C style comment
-       that supports multiple lines.
-    */
-    // A C++ comment that extends to current end-of-line.
+    const getProgramSettings = require('pgm-settings').getProgramSettings
 
-### Sources of program settings are:
-
-1. A default node.js object
-2. A document retrieved by explicit filename
-3. A document referenced by a process environment variable
-4. A document referenced by a program argument variable
-
-The returned object is a merge of all specified configuration sources.
-
-## Version 1.0.0 getProgramSettings()
-
-The getProgramSettings() function is called without any options.
-
-The *environment variable* **SETTINGS** is assumed.
-
-The *program argument* **--settings=filepath** is assumed.
-
-The collection uses the environment variable SETTINGS if it exists.
-The environment variable may contain either a filepath to a JSON file or
-a string representation of a JSON document.
-
-## Version 1.1.0 getProgramSettings({options})
-
-If the {options} is absent, then functionality of Version 1.0.0 is assumed.
+    theSettings = await getProgramSettings({options})
 
 ### The Options:
 
 | OPTION   | TYPE  | SEQ | DESCRIPTION  |
 |--|--|--|--|
 | default: | object | 1 | default node.js configuration object |
-| file:    | string | 2 | A filepath to a JSON file |
+| file:    | string | 2 | A filepath to a json file |
 | env:     | string | 3 | The environment variable name |
 | arg:     | string | 4 | The program arguement name |
 | argenv:  | string | 5 | Composite env/arg name |
 
-The **default:** allows configuration setting collection to be chained. Additional settings sources have their keys added to the default collection.
+If the {options} is empty, then the following is assumed:
 
-The **file:** specifies a path to a JSON file.
+    env: 'SETTINGS'       env.SETTINGS can be a filepath or json document
+    arg: 'settings'       parsed as --settings=filepath
 
-The **env:** specifies the environment variable to be analyzed.
-The value may either be a string containing a JSON filename path or the content of a JSON document.
+The argenv: argument is ignored if either env: or arg: are specified.
 
-The **arg** specifies the name of a program argument.
-The value is parsed as --argname=filepath.json
+    env = argenv.toUpperCase()
+    arg = argenv.toLowerCase()
 
-The **argenv:** specifies a composite for **arg:** and **env:** but has no effect if either argument is also specified. The **arg:** is the same as **argenv.toLowerCase()**. The **env:** is the same as **argenv.toUpperCase()**.
+### JSON Comments - C/C++
 
-## Usage Patterns
+Source json files may have C/C++ style comments. The comments are removed before the json document is parsed.
 
-    const getSettings = require('pgmsettings').getProgramSettings;
-    
-    var theSettings;
-    (async function() {
-     // async-await
-      theSettings = await getSettings({options});
-     // or promise  
-      getSettings({options}).then(settings =>{}).catch(err =>{})
-    })();
+    /* A C style comment
+       that supports multiple lines.
+    */
+    // A C++ comment that extends to current end-of-line.
 
-## The Package
-
-    package.json // the package definition
-    index.js     // or getProgramSettings.js
-    test/        // mocha.js regression tests
-
-### Example Files
+### Example Files - for your own tests
 mytest.js
 settings-env.json
 settings-file.json
-settings-json
+settings.json
 
-### Mocha Tests: (npm test)
+### Mocha Test Suite: (npm test)
 
     test/testing.js		// the regression test file
     test/settings-arg.json	// configuration file for program argument testing
     test/settings-env.json	// configuration file for program environment testing
-    test/settings-env.json	// configuration file for options {file: filename.json} testing
-
+    test/settings-file.json	// configuration file for options {file: filename.json} testing
 
     Testing getProgramSettings
         ✓ No Configurations Supplied
