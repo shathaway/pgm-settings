@@ -7,6 +7,8 @@ The source json documents may contain C/C++ style comments that are removed befo
 
 The **getProgramSettings({options})** is an async function that can also return a node promise.
 
+## Configuration Sources
+
 * default settings object
 * specified json file
 * program environment variable
@@ -16,13 +18,18 @@ The **getProgramSettings({options})** is an async function that can also return 
 
     const getProgramSettings = require('pgm-settings').getProgramSettings
 
-    theSettings = await getProgramSettings({options})
+    var theSettings = await getProgramSettings({options})
 
 ### The Options:
 
+Option = name of option
+Type = typeof option
+Seq = processing sequence
+Description = purpose of option
+
 | OPTION   | TYPE  | SEQ | DESCRIPTION  |
 |--|--|--|--|
-| default: | object | 1 | default node.js configuration object |
+| default: | object | 1 | default configuration object |
 | file:    | string | 2 | A filepath to a json file |
 | env:     | string | 3 | The environment variable name |
 | arg:     | string | 4 | The program arguement name |
@@ -49,8 +56,11 @@ Source json files may have C/C++ style comments. The comments are removed before
 
 ### Example Files - for your own tests
 mytest.js
+
 settings-env.json
+
 settings-file.json
+
 settings.json
 
 ### Mocha Test Suite: (npm test)
