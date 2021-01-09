@@ -380,11 +380,13 @@ async function getProgramSettings(options){
 
 module.exports.getProgramSettings = getProgramSettings;
 
+/* -- REMOVE default async function from exports
 module.exports = async function (options) {
  if (typeof options === 'object')
    return await getProgramSettings(options);
  else
    return await getProgramSettings();
 }
+*/
 
 

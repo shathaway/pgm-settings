@@ -1,7 +1,6 @@
 'use strict';
 
-var getSettings = require('./index.js'); //.getProgramSettings;
-//const getSettings = xindex.getProgramSettings;
+var getSettings = require('./index.js').getProgramSettings;
 
 (async function () {
 
