@@ -1,6 +1,6 @@
 {
   "name": "pgm-settings",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Get program settings and merge json documents",
   "homepage": "https://github.com/shathaway/pgm-settings#readme",
   "repository": {
