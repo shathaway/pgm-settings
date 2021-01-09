@@ -380,70 +380,11 @@ async function getProgramSettings(options){
 
 module.exports.getProgramSettings = getProgramSettings;
 
-////
-//// --- TESTING THE MODULE -----
-////
-
-/*
- (async function (){
-//   console.log('Before initStateEnv() initialized = ' + initialized);
-//   // INITIALIZE
-//   if (! initialized) await initStateEnv();
-//
-//   console.log('After initStateEnv() initialized = ' + initialized);
-//   console.log('PGM ARGS OBJECT = ' + JSON.stringify(args,null,2));
-//   console.log('CALLING: programSettings = await fnDoArgSettings()');
-
-   var programSettings;
-
-   var defaultObject = {
-     DefaultValue1: 'Default Value 1',
-     DefaultValue2: 'Default Value 2'};
-
-   // THE FUNCTION BEING TESTED
-
-   try {
-     MYDEBUG('file: settings-file.json', 'OUTER');
-     programSettings = await getProgramSettings({
-//       'file': 'settings-file.json',
-       'default': defaultObject,
-       'argenv': 'Node_Settings' });
-//   MYDEBUG(programSettings, 'OUTER programSettings');
-     await deferClose();
-   }
-   catch(er) {
-     console.error('ERR FROM: getProgramSettings() = ' + er.message);
-   }
-
-   // Display the composite programSettings object as a pretty JSON document.
-   if (typeof programSettings === 'object') console.log('PROGRAM SETTINGS = \n' +
-       JSON.stringify(programSettings,null,2));
-   MYDEBUG('Returning: programSettings');
-   return programSettings;
- }());
-
-function MYDEBUG(info, tag){
-  if (typeof tag === 'string'){
-  
-    if (typeof info === 'string')
-      console.log('DEBUG (' + tag + ') = ' + info);
-    if (typeof info === 'object')
-      console.log('DEBUG (' + tag + ') = ' + JSON.stringify(info,null,2));
-
-  }else{
-    if (typeof info === 'string')
-      console.log('DEBUG - ' + info);
-    if (typeof info === 'object')
-      console.log('DEBUG - ' + JSON.stringify(info,null,2));
-  }
-}
-*/
-
-module.export = (async function (options) {
+module.exports = async function (options) {
  if (typeof options === 'object')
-   return await getProgramSettings(object);
+   return await getProgramSettings(options);
  else
    return await getProgramSettings();
-})
+}
 
 

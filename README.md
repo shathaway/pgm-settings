@@ -16,9 +16,12 @@ The **getProgramSettings({options})** is an async function that can also return 
 
 ## Usage
 
-    const getProgramSettings = require('pgm-settings').getProgramSettings
+    const getSettings = require('pgm-settings').getProgramSettings;
+    var theSettings = await getSettings({options})
 
-    var theSettings = await getProgramSettings({options})
+The working function in the module is getProgramSettings({options}).
+The entry point for the module is an un-named async function that 
+calls getProgramSettings().
 
 ### The Options:
 
@@ -39,6 +42,7 @@ If the {options} is empty, then the following is assumed:
 
     env: 'SETTINGS'       env.SETTINGS can be a filepath or json document
     arg: 'settings'       parsed as --settings=filepath
+                          or --settings filepath
 
 The argenv: argument is ignored if either env: or arg: are specified.
 
@@ -55,13 +59,10 @@ Source json files may have C/C++ style comments. The comments are removed before
     // A C++ comment that extends to current end-of-line.
 
 ### Example Files - for your own tests
-mytest.js
-
-settings-env.json
-
-settings-file.json
-
-settings.json
+    mytest.js
+    settings-env.json
+    settings-file.json
+    settings.json
 
 ### Mocha Test Suite: (npm test)
 
@@ -97,4 +98,12 @@ settings.json
         ✓ Program argenv: Node_Settings - Combined Configurations
             getProgramSettings({argenv:'Node_Settings'})
             // implies env:'NODE_SETTINGS' and arg:'node_settings'
+
+### Support
+
+You can use github resources to help resolve issues.
+
+The author email is not read on a regular basis.
+
+
 

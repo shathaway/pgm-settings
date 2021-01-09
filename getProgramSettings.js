@@ -380,11 +380,11 @@ async function getProgramSettings(options){
 
 module.exports.getProgramSettings = getProgramSettings;
 
-module.export = (async function (options) {
+module.exports = async function (options) {
  if (typeof options === 'object')
-   return await getProgramSettings(object);
+   return await getProgramSettings(options);
  else
    return await getProgramSettings();
-})
+}
 
 
