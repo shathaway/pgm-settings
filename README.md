@@ -20,8 +20,6 @@ The **getProgramSettings({options})** is an async function that can also return 
     var theSettings = await getSettings({options})
 
 The working function in the module is getProgramSettings({options}).
-The entry point for the module is an un-named async function that 
-calls getProgramSettings().
 
 ### The Options:
 
