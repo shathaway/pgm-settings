@@ -1,5 +1,5 @@
 ﻿
-# node.js / Module: pgm-settings
+# Module: pgm-settings
 
 This is a node module to retrieve program settings from various json document sources. The source objects are merged into a single node object. Any node object can be used as a set of default parameters, thus allowing setting collections to be chained.
 
